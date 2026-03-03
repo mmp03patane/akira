@@ -2374,3 +2374,107 @@ h4 {
     display: block;
     margin: 0 auto;
 }
+
+/* ===========================
+   MODALS
+=========================== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 31, 78, 0.7);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-inner {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+}
+
+.modal-inner h3 {
+    margin-bottom: 0.5rem;
+}
+
+.modal-inner p {
+    margin-bottom: 1.5rem;
+    color: #4a5568;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: #4a5568;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: #0D1F4E;
+}
+
+.form-field {
+    margin-bottom: 1.25rem;
+}
+
+.form-field label {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #0D1F4E;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    width: 100%;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    color: #1a1a1a;
+    background: #ffffff;
+    transition: border-color 0.2s ease;
+    appearance: none;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    border-color: #0D1F4E;
+    outline: none;
+}
+
+.modal-inner .btn-primary {
+    width: 100%;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .modal-inner {
+        padding: 2rem 1.5rem;
+    }
+}

@@ -13,6 +13,30 @@
 <!-- HEADER -->
 <div id="site-header"></div>
 
+<!-- MODAL -->
+<div class="modal-overlay" id="compliance-modal">
+    <div class="modal-inner">
+        <button class="modal-close" id="close-compliance-modal">✕</button>
+        <h3>Let's Chat</h3>
+        <p>Tell us a bit about yourself and we'll be in touch within one business day.</p>
+        <form action="https://formspree.io/f/mzdalvln" method="POST">
+            <div class="form-field">
+                <label for="compliance-name">Your Name</label>
+                <input type="text" id="compliance-name" name="name" required>
+            </div>
+            <div class="form-field">
+                <label for="compliance-phone">Phone Number</label>
+                <input type="tel" id="compliance-phone" name="phone" required>
+            </div>
+            <div class="form-field">
+                <label for="compliance-email">Email Address</label>
+                <input type="email" id="compliance-email" name="email" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Send →</button>
+        </form>
+    </div>
+</div>
+
 <!-- Page Hero -->
 <section class="hero-section">
     <div class="container">
@@ -24,7 +48,7 @@
             </p>
         </div>
         <div class="hero-cta">
-            <a href="contact.html" class="btn btn-primary">Let's Chat →</a>
+            <button class="btn btn-primary open-compliance-modal">Let's Chat →</button>
         </div>
     </div>
 </section>
@@ -42,7 +66,6 @@
 <section class="compliance-section">
     <div class="container">
 
-        <!-- 1. Legal & Business Identification -->
         <div class="compliance-block">
             <div class="compliance-icon">01</div>
             <div class="compliance-content">
@@ -59,7 +82,6 @@
             </div>
         </div>
 
-        <!-- 2. Required Policies -->
         <div class="compliance-block">
             <div class="compliance-icon">02</div>
             <div class="compliance-content">
@@ -79,7 +101,6 @@
             </div>
         </div>
 
-        <!-- 3. Complaints & Feedback -->
         <div class="compliance-block">
             <div class="compliance-icon">03</div>
             <div class="compliance-content">
@@ -95,7 +116,6 @@
             </div>
         </div>
 
-        <!-- 4. Accessibility -->
         <div class="compliance-block">
             <div class="compliance-icon">04</div>
             <div class="compliance-content">
@@ -115,7 +135,6 @@
             </div>
         </div>
 
-        <!-- 5. Service Descriptions -->
         <div class="compliance-block">
             <div class="compliance-icon">05</div>
             <div class="compliance-content">
@@ -132,7 +151,6 @@
             </div>
         </div>
 
-        <!-- 6. Transparent Pricing -->
         <div class="compliance-block">
             <div class="compliance-icon">06</div>
             <div class="compliance-content">
@@ -148,7 +166,6 @@
             </div>
         </div>
 
-        <!-- 7. Participant Rights -->
         <div class="compliance-block">
             <div class="compliance-icon">07</div>
             <div class="compliance-content">
@@ -165,7 +182,6 @@
             </div>
         </div>
 
-        <!-- 8. Data Security -->
         <div class="compliance-block">
             <div class="compliance-icon">08</div>
             <div class="compliance-content">
@@ -183,7 +199,6 @@
             </div>
         </div>
 
-        <!-- 9. Worker Screening -->
         <div class="compliance-block">
             <div class="compliance-icon">09</div>
             <div class="compliance-content">
@@ -199,7 +214,6 @@
             </div>
         </div>
 
-        <!-- 10. No Misleading Marketing -->
         <div class="compliance-block">
             <div class="compliance-icon">10</div>
             <div class="compliance-content">
@@ -257,7 +271,7 @@
     <div class="container">
         <h2>Ready to Build a Website That Does This Right?</h2>
         <p>Every Akira site is built with the NDIS Commission in mind — so you can focus on your participants, not your audit checklist.</p>
-        <a href="contact.html" class="btn btn-primary">Book a Free Call →</a>
+        <button class="btn btn-primary open-compliance-modal">Book a Free Call →</button>
     </div>
 </section>
 
@@ -266,7 +280,25 @@
 
 <script src="js/partials.js"></script>
 <script src="js/header-scroll.js"></script>
-
 <script src="js/scripts.js"></script>
+<script src="js/modals.js"></script>
+<script>
+    document.querySelectorAll('.open-compliance-modal').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.getElementById('compliance-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    document.getElementById('close-compliance-modal').addEventListener('click', () => {
+        document.getElementById('compliance-modal').classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    document.getElementById('compliance-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+</script>
 </body>
 </html>

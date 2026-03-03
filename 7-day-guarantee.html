@@ -13,6 +13,30 @@
 <!-- HEADER -->
 <div id="site-header"></div>
 
+<!-- MODAL -->
+<div class="modal-overlay" id="guarantee-modal">
+    <div class="modal-inner">
+        <button class="modal-close" id="close-guarantee-modal">✕</button>
+        <h3>Claim Your Guarantee</h3>
+        <p>Tell us a bit about yourself and we'll be in touch within one business day.</p>
+        <form action="https://formspree.io/f/xbdavzll" method="POST">
+            <div class="form-field">
+                <label for="guarantee-name">Your Name</label>
+                <input type="text" id="guarantee-name" name="name" required>
+            </div>
+            <div class="form-field">
+                <label for="guarantee-phone">Phone Number</label>
+                <input type="tel" id="guarantee-phone" name="phone" required>
+            </div>
+            <div class="form-field">
+                <label for="guarantee-email">Email Address</label>
+                <input type="email" id="guarantee-email" name="email" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Send →</button>
+        </form>
+    </div>
+</div>
+
 <!-- Page Hero -->
 <section class="hero-section">
     <div class="container">
@@ -24,7 +48,7 @@
             </p>
         </div>
         <div class="hero-cta">
-            <a href="contact.html" class="btn btn-primary">Claim Your Guarantee →</a>
+            <button class="btn btn-primary open-guarantee-modal">Claim Your Guarantee →</button>
         </div>
     </div>
 </section>
@@ -205,7 +229,7 @@
                 <h2>The 7-day guarantee applies to the Starter package.</h2>
                 <p>The Starter package is built for speed — 1 to 3 pages, a clear scope, and a focused delivery process that makes a 7-day turnaround achievable every time.</p>
                 <p>The Growth and Authority packages involve deeper integrations, larger page counts, and more complex requirements. These are delivered to a mutually agreed timeline discussed during onboarding — not a fixed guarantee. Quality at that scope takes time.</p>
-                <a href="contact.html" class="btn btn-primary">Start With Starter →</a>
+                <button class="btn btn-primary open-guarantee-modal">Start With Starter →</button>
             </div>
             <div class="guarantee-tier-card">
                 <h3>Starter</h3>
@@ -221,7 +245,7 @@
                     <li>Launch Support</li>
                     <li><strong>7-Day Guarantee ✓</strong></li>
                 </ul>
-                <a href="contact.html" class="btn btn-pricing">Get Started →</a>
+                <button class="btn btn-pricing open-guarantee-modal">Get Started →</button>
             </div>
         </div>
     </div>
@@ -233,7 +257,7 @@
         <div class="final-cta-inner">
             <h2>A website in 7 days.<br>Guaranteed in writing.</h2>
             <p>Book a free call and we'll confirm whether the Starter package is the right fit for your practice before any commitment is made.</p>
-            <a href="contact.html" class="btn btn-primary btn-large">Book a Free Call →</a>
+            <button class="btn btn-primary btn-large open-guarantee-modal">Book a Free Call →</button>
             <p class="final-cta-sub">No obligation. No sales pitch. Just an honest conversation.</p>
         </div>
     </div>
@@ -245,5 +269,24 @@
 <script src="js/partials.js"></script>
 <script src="js/header-scroll.js"></script>
 <script src="js/scripts.js"></script>
+<script src="js/modals.js"></script>
+<script>
+    document.querySelectorAll('.open-guarantee-modal').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.getElementById('guarantee-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    document.getElementById('close-guarantee-modal').addEventListener('click', () => {
+        document.getElementById('guarantee-modal').classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    document.getElementById('guarantee-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+</script>
 </body>
 </html>

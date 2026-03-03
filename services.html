@@ -13,6 +13,30 @@
 <!-- HEADER -->
 <div id="site-header"></div>
 
+<!-- MODAL -->
+<div class="modal-overlay" id="services-modal">
+    <div class="modal-inner">
+        <button class="modal-close" id="close-services-modal">✕</button>
+        <h3>Let's Chat</h3>
+        <p>Tell us a bit about yourself and we'll be in touch within one business day.</p>
+        <form action="https://formspree.io/f/mzdalvln" method="POST">
+            <div class="form-field">
+                <label for="services-name">Your Name</label>
+                <input type="text" id="services-name" name="name" required>
+            </div>
+            <div class="form-field">
+                <label for="services-phone">Phone Number</label>
+                <input type="tel" id="services-phone" name="phone" required>
+            </div>
+            <div class="form-field">
+                <label for="services-email">Email Address</label>
+                <input type="email" id="services-email" name="email" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Send →</button>
+        </form>
+    </div>
+</div>
+
 <!-- Page Hero -->
 <section class="hero-section">
     <div class="container">
@@ -30,7 +54,6 @@
 <section class="services-section">
     <div class="container">
 
-        <!-- Web Design -->
         <div class="service-block" id="web-design">
             <div class="service-header">
                 <div>
@@ -54,7 +77,6 @@
 
         <div class="service-divider"></div>
 
-        <!-- Web Development & Ecosystem Integration -->
         <div class="service-block" id="web-development">
             <div class="service-header">
                 <div>
@@ -79,7 +101,6 @@
 
         <div class="service-divider"></div>
 
-        <!-- Local SEO -->
         <div class="service-block" id="local-seo">
             <div class="service-header">
                 <div>
@@ -104,7 +125,6 @@
 
         <div class="service-divider"></div>
 
-        <!-- Review Automation -->
         <div class="service-block" id="review-automation">
             <div class="service-header">
                 <div>
@@ -129,7 +149,6 @@
 
         <div class="service-divider"></div>
 
-        <!-- NDIS Compliance Consulting -->
         <div class="service-block" id="ndis-compliance">
             <div class="service-header">
                 <div>
@@ -153,7 +172,6 @@
 
         <div class="service-divider"></div>
 
-        <!-- Logo & Brand Identity -->
         <div class="service-block" id="branding">
             <div class="service-header">
                 <div>
@@ -177,7 +195,6 @@
 
         <div class="service-divider"></div>
 
-        <!-- Business & Marketing Strategy -->
         <div class="service-block" id="consulting">
             <div class="service-header">
                 <div>
@@ -187,7 +204,7 @@
             </div>
             <div class="service-body">
                 <p>Most NDIS providers are exceptional at delivering services and underprepared for running a business. Pricing, positioning, referral relationships with support coordinators, how to market to participants versus families versus GPs — these are skills that take time to develop, and mistakes are expensive.</p>
-                <p>With a background in Law and Business and hands-on experience working with organisations like GLG, Jim's Group, and MYOB, I offer focused strategy sessions for NDIS providers who want to grow with intention — not just hope the phone rings.</p>
+                <p>With a background in Law and Business and hands-on experience working with organisations like GLG, Jim's Group, and MYOB, we offer focused strategy sessions for NDIS providers who want to grow with intention — not just hope the phone rings.</p>
                 <ul class="service-list">
                     <li>Positioning and niche strategy</li>
                     <li>Referral pathway development — support coordinators & GPs</li>
@@ -201,7 +218,6 @@
 
         <div class="service-divider"></div>
 
-        <!-- Website Maintenance & Support -->
         <div class="service-block" id="maintenance">
             <div class="service-header">
                 <div>
@@ -231,8 +247,8 @@
 <section class="services-cta">
     <div class="container">
         <h2>Not sure which services you need?</h2>
-        <p>Book a free 30-minute call and I'll tell you exactly what will move the needle for your practice right now — and what can wait.</p>
-        <a href="contact.html" class="btn btn-primary">Book a Free Call →</a>
+        <p>Book a free 30-minute call and we'll tell you exactly what will move the needle for your practice right now — and what can wait.</p>
+        <button class="btn btn-primary open-services-modal">Book a Free Call →</button>
     </div>
 </section>
 
@@ -241,7 +257,25 @@
 
 <script src="js/partials.js"></script>
 <script src="js/header-scroll.js"></script>
-
 <script src="js/scripts.js"></script>
+<script src="js/modals.js"></script>
+<script>
+    document.querySelectorAll('.open-services-modal').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.getElementById('services-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    document.getElementById('close-services-modal').addEventListener('click', () => {
+        document.getElementById('services-modal').classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    document.getElementById('services-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+</script>
 </body>
 </html>

@@ -13,6 +13,30 @@
 <!-- HEADER -->
 <div id="site-header"></div>
 
+<!-- HERO POPUP MODAL -->
+<div class="modal-overlay" id="hero-modal">
+    <div class="modal-inner">
+        <button class="modal-close" id="close-hero-modal">✕</button>
+        <h3>Let's Chat</h3>
+        <p>Tell us a bit about yourself and we'll be in touch within one business day.</p>
+        <form action="https://formspree.io/f/mzdalvln" method="POST">
+            <div class="form-field">
+                <label for="hero-name">Your Name</label>
+                <input type="text" id="hero-name" name="name" required>
+            </div>
+            <div class="form-field">
+                <label for="hero-phone">Phone Number</label>
+                <input type="tel" id="hero-phone" name="phone" required>
+            </div>
+            <div class="form-field">
+                <label for="hero-email">Email Address</label>
+                <input type="email" id="hero-email" name="email" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Send →</button>
+        </form>
+    </div>
+</div>
+
 <!-- HERO -->
 <section class="hero-section">
     <div class="container">
@@ -139,7 +163,7 @@
     <div class="container">
         <h2>Ready to work with someone who gets it?</h2>
         <p>Book a free call and we'll have a chat about what your practice needs.</p>
-        <a href="contact.html" class="btn btn-primary">Let's Chat →</a>
+        <button class="btn btn-primary btn-large open-hero-modal">Let's Chat →</button>
     </div>
 </section>
 
@@ -148,7 +172,25 @@
 
 <script src="js/partials.js"></script>
 <script src="js/header-scroll.js"></script>
-
 <script src="js/scripts.js"></script>
+<script src="js/modals.js"></script>
+<script>
+    document.querySelectorAll('.open-hero-modal').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.getElementById('hero-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    document.getElementById('close-hero-modal').addEventListener('click', () => {
+        document.getElementById('hero-modal').classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    document.getElementById('hero-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+</script>
 </body>
 </html>
